@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MainPage {
+
+
+
     @FindBy(xpath = "/html/body/section[2]/div/div/div/input")
     private WebElement inputEmailField;
 
@@ -32,13 +35,11 @@ public class MainPage {
 
 
 
-
-
-
     public MainPage(WebDriver driver){                  //constructor//
         PageFactory.initElements(driver,this);
 
     }
+
 
     public void inputValueInEmailField(String string) {
         inputEmailField.sendKeys(string);
@@ -65,6 +66,8 @@ public class MainPage {
     public void clickOnReadMoreHybrid() {
         readMoreHybridButton.click();
     }
+
+
     public WebElement getReadMorelHeaderHybrid(){
         return readMorelHeaderHybrid;
     }
