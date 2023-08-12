@@ -9,7 +9,7 @@ public class LastClass {
 
 
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[5]/a")
-    private WebElement ClickReturnHomepage;
+    private WebElement clickReturnHomepage;
 
 
 
@@ -23,7 +23,7 @@ public LastClass(WebDriver driver){
 
 
 public void ClickReturnHomepage(){
-    ClickReturnHomepage.click();
+    clickReturnHomepage.click();
 }
 
 

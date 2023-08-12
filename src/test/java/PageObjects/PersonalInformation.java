@@ -29,6 +29,9 @@ public class PersonalInformation {
      @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/button")
      private WebElement clickNextForPersonalInformation;
 
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/h3")
+    private  WebElement personalInformationHeader;
+
 
 
     public PersonalInformation(WebDriver driver) {
@@ -42,6 +45,7 @@ public class PersonalInformation {
     public void insertLastName(String string) {insertLastName.sendKeys(string);
     }
     public void insertUserName(String string){insertUserName.sendKeys(string);
+
     }
     public void insertPassword(String string){insertPassword.sendKeys(string);
     }
@@ -58,5 +62,8 @@ public class PersonalInformation {
         insertPassword("AAA");
         insertConfirmPassword("AAA");
         NextForPersonalInformation();
+    }
+
+    public String personalInformationHeaderText(){return personalInformationHeader.getText();
     }
 }
