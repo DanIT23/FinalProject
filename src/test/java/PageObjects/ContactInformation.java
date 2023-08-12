@@ -36,6 +36,10 @@ private WebElement selectButton2ForCourseOption;
 @FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/button[2]")
 private WebElement nextForCourseOption;
 
+@FindBy(xpath = "/html/body/div/div/section/div/form/div[2]/h3")
+private  WebElement contactInformationHeader;
+
+
 
 
 public ContactInformation (WebDriver driver) {
@@ -85,6 +89,9 @@ public ContactInformation (WebDriver driver) {
 
     }
 
+    public String contactInformationHeaderText(){
+    return contactInformationHeader.getText();
+    }
 
     }
 

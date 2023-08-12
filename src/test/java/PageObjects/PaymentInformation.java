@@ -35,6 +35,10 @@ public class PaymentInformation {
     private WebElement clickReturnToHomepage;
 
 
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/h3")
+    private WebElement paymentInformationHeader;
+
+
     public PaymentInformation(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -73,6 +77,10 @@ public class PaymentInformation {
         SelectYer();
         NextForPaymentInformation();
 
+    }
+
+    public String paymentInformationHeaderText(){
+        return paymentInformationHeader.getText();
     }
 
 }

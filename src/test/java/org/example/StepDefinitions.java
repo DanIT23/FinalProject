@@ -3,6 +3,8 @@ package org.example;
 import PageObjects.*;
 import io.cucumber.java.en.*;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AssertionsKt;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,9 +19,7 @@ public class StepDefinitions {
     PersonalInformation personalInformation;
     ContactInformation contactInformation;
     PaymentInformation paymentInformation;
-
     LastClass lastClass;
-
 
 
     public StepDefinitions() {
@@ -34,6 +34,7 @@ public class StepDefinitions {
         personalInformation = new PersonalInformation(driver);
         paymentInformation = new PaymentInformation(driver);
         lastClass = new LastClass(driver);
+
     }
 
 
@@ -43,7 +44,7 @@ public class StepDefinitions {
     }
 
     @Given("I am on the personal information")
-    public void i_am_on_the_personal_information() {
+    public void i_am_on_the_personal_information() {   //
         driver.get("file:///C:/Users/DjANIEL/Downloads/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
     }
 
@@ -53,7 +54,7 @@ public class StepDefinitions {
     }
 
 
-    @Given("Next for personal information is clicked")
+    @And("Next for personal information is clicked")
     public void click_next_for_information_personal (){
         Utils.waitForElementToLoad(2);
         personalInformation.NextForPersonalInformation();
@@ -65,13 +66,13 @@ public class StepDefinitions {
         personalInformation.fillInPersonalInformation();
     }
 
-    @Given("Next for CI is clicked")
+    @And("Next for CI is clicked")
     public void click_next_for_CI(){
         contactInformation.ClickNextForCI();
     }
 
-    @Given("Next for course option")
-    public void clik_next_for_course_option(){
+    @And("Next for course option")
+    public void click_next_for_course_option(){
         contactInformation.NextForCourseOption();
     }
 
@@ -81,7 +82,7 @@ public class StepDefinitions {
         personalInformation.fillInPersonalInformation();
         contactInformation.fillInContactInformation();
     }
-    @Given("Next for payment information is clicked")
+    @And("Next for payment information is clicked")
     public void next_for_payment_information_is_clicked(){
         paymentInformation.NextForPaymentInformation();
     }
@@ -99,9 +100,10 @@ public class StepDefinitions {
 
 
 
-
-
-
+    @When("I click on Instructor")
+    public void iClickOnInstructor() {
+        mainPage.clickOnInstructor();
+    }
 
     @When("The email value of {string} is inputted")
     public void input_email_to_field(String string) {
@@ -109,11 +111,20 @@ public class StepDefinitions {
         mainPage.inputValueInEmailField(string);
     }
 
+    @When("The email value of {string} is insert")
+    public void the_email_value_of_is_insert(String string){
+        mainPage.insertEmailNoLimit(string);
+    }
 
-    @When("The submit button is clicked")
+    @And("The submit button is clicked")
     public void click_submit_button() {
         Utils.waitForElementToLoad(2);
         mainPage.clickOnSubmitButton();
+    }
+
+    @And("The button is clicked")
+    public void click_button_is_clicked(){
+        mainPage.clickEmailSubmitButton();
     }
 
     @When("The Enrollment button is clicked")
@@ -129,8 +140,17 @@ public class StepDefinitions {
         mainPage.clickReadMoreTheFundamentals();
     }
 
-    @When("Select button 2 for course option")
-    public void select_button2_for_course_option(){
+
+    @When("Click button read more for learn selenium")
+    public void click_button_read_more_for_learn_selenium(){
+        Utils.scrollToElement(driver,mainPage.getReadMoreHeaderLearnSelenium());
+        mainPage.clickReadMoreLearnSelenium();
+    }
+
+
+
+    @When("Select second button  for course option")
+    public void select_second_button_for_course_option(){
         contactInformation.SelectButton2ForCourseOption();
     }
 
@@ -139,8 +159,6 @@ public class StepDefinitions {
         Utils.scrollToElement(driver, mainPage.getReadMorelHeaderHybrid());
         mainPage.clickReadMoreInPerson();
     }
-
-
 
 
     @When("The read more button for hybrid section is clicked")
@@ -167,10 +185,15 @@ public class StepDefinitions {
         paymentInformation.InsertHolderNameInCard(string);
     }
 
-    @When("Select month")
+    @And("Select month")
     public void select_month(){
         paymentInformation.SelectMonth();
     }
+
+
+
+
+
 
 
 
@@ -241,7 +264,59 @@ public class StepDefinitions {
     @And("Return in main page")
     public void return_in_main_page(){
         lastClass.ClickReturnHomepage();
+    }
 
+    @Then("the newsletter pop-up appears")
+    public void theNewsletterPopUpAppears() {
+        driver.switchTo().alert().accept();
+    }
+
+
+
+
+    @Then("Contact information is open")
+    public void contactInformationIsOpen() {
+        Assertions.assertEquals("Contact Information", contactInformation.contactInformationHeaderText());
+    }
+
+
+    @Then("{string} page is open")
+    public void pageIsOpen(String string) {
+        Assertions.assertEquals(string,driver.getTitle());
+    }
+
+
+    @Then("Personal information is open")
+    public void personalInformationIsOpen() {
+        Assertions.assertEquals("Personal information", personalInformation.personalInformationHeaderText());
+    }
+
+
+    @Then("{string} page is no the next page")
+    public void learnSeleniumPageIsNoTheNextPage(String string){
+        Assertions.assertEquals(string, driver.getTitle());
+    }
+
+    @Then("Payment Information is open")
+    public void paymentInformationIsOpen() {
+        Assertions.assertEquals("Payment information", paymentInformation.paymentInformationHeaderText());
+    }
+
+    @Then("Registration has been made successfully")
+    public void registrationHasBeenMadeSuccessfully() {
+        Assertions.assertEquals("Last Class", lastClass.successPageHeaderText());
+    }
+
+
+    @Then("Main page is return")
+    public void mainPageIsReturn() {
+        Assertions.assertEquals("Main Page", mainPage.softwareTestingCourseHeaderText());
+    }
+
+
+    @Then("Our instructor header should appear")
+    public void ourInstructorHeaderShouldAppear() {
+        driver.switchTo().alert().accept();
     }
 }
 
