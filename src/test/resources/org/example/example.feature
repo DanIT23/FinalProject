@@ -3,7 +3,7 @@ Feature: An example
 Scenario: Click on the Instructor
   Given   I am on the main page
   When    I click on Instructor
-  Then    Our instructor header should appear
+  Then    Our instructors header should appear
 
 
   Scenario: Test insert email
@@ -36,14 +36,14 @@ Scenario: Click on the Instructor
     Then    "Hybrid" page is open
 
 
-    Scenario:
+
 
 
   Scenario: Negative - There is no limit character
     Given   I am on the main page
     When    The email value of "AAAAbbbbcccccdddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee@tester.com" is insert
     And     The button is clicked
-
+    Then    the newsletter pop-up appears
 
     Scenario: Positive - Read More for Learn Selenium
       Given   I am on the main page
@@ -90,6 +90,9 @@ Scenario: Click on the Instructor
     Given   I am on last class
     And     Return in main page
     Then    Main page is return
+
+
+
 
 
 

@@ -42,6 +42,9 @@ public class MainPage {
     @FindBy(xpath = "/html/body/nav/div/a")
     private  WebElement softwareTestingCourseHeader;
 
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/h2")
+    private  WebElement ourInstructorsHeader;
+
 
 
 
@@ -93,6 +96,8 @@ public class MainPage {
     public String softwareTestingCourseHeaderText(){
         return softwareTestingCourseHeader.getText();
     }
+
+    public  String ourInstructorsHeaderText(){return ourInstructorsHeader.getText();}
 
 }
 

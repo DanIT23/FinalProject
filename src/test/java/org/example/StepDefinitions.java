@@ -276,7 +276,7 @@ public class StepDefinitions {
 
     @Then("Contact information is open")
     public void contactInformationIsOpen() {
-        Assertions.assertEquals("Contact Information", contactInformation.contactInformationHeaderText());
+        Assertions.assertEquals("Contact information", contactInformation.contactInformationHeaderText());
     }
 
 
@@ -304,20 +304,21 @@ public class StepDefinitions {
 
     @Then("Registration has been made successfully")
     public void registrationHasBeenMadeSuccessfully() {
-        Assertions.assertEquals("Last Class", lastClass.successPageHeaderText());
+        Assertions.assertEquals("Success!", lastClass.successPageHeaderText());
     }
 
 
     @Then("Main page is return")
     public void mainPageIsReturn() {
-        Assertions.assertEquals("Main Page", mainPage.softwareTestingCourseHeaderText());
+        Assertions.assertEquals("Software testing course", mainPage.softwareTestingCourseHeaderText());
     }
 
 
-    @Then("Our instructor header should appear")
+    @Then("Our instructors header should appear")
     public void ourInstructorHeaderShouldAppear() {
-        driver.switchTo().alert().accept();
+        Assertions.assertEquals("Our Instructors", mainPage.ourInstructorsHeaderText());
     }
+
 }
 
 
