@@ -124,6 +124,7 @@ public class StepDefinitions {
 
     @And("The button is clicked")
     public void click_button_is_clicked(){
+        Utils.waitForElementToLoad(5);
         mainPage.clickEmailSubmitButton();
     }
 
@@ -268,8 +269,15 @@ public class StepDefinitions {
 
     @Then("the newsletter pop-up appears")
     public void theNewsletterPopUpAppears() {
+        Utils.waitForElementToLoad(5);
         driver.switchTo().alert().accept();
     }
+
+        @Then("the newsletter pop-up appears is failed")
+        public void theNewsletterPopUpAppearsIsFailed() {
+            Utils.waitForElementToLoad(5);
+            driver.switchTo().alert().accept();
+        }
 
 
 
@@ -292,8 +300,8 @@ public class StepDefinitions {
     }
 
 
-    @Then("{string} page is no the next page")
-    public void learnSeleniumPageIsNoTheNextPage(String string){
+    @Then("{string} page is the next page")
+    public void learnSeleniumPageIsTheNextPage(String string){
         Assertions.assertEquals(string, driver.getTitle());
     }
 
@@ -319,7 +327,25 @@ public class StepDefinitions {
         Assertions.assertEquals("Our Instructors", mainPage.ourInstructorsHeaderText());
     }
 
+
+    @Then("{string} does is not open")
+    public void doesIsNotOpen(String arg0) {
+        Assertions.assertEquals(arg0,driver.getTitle());
+    }
+
+    @And("I click on Jane Doe Twitter page")
+    public void iClickOnJaneDoeTwitterPage() {
+        Utils.scrollToElement(driver,mainPage.getOurInstructorsHeader());
+        mainPage.clickTwitterJane();
+    }
+
+    @Then("I will redirected to Twitter page")
+    public void iWillRedirectedToTwitterPage() {
+        Assertions.assertEquals("Happening now",mainPage.nextPageTwitterText()  );
+    }
 }
+
+
 
 
 

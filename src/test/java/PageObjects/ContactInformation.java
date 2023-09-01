@@ -91,7 +91,7 @@ public ContactInformation (WebDriver driver) {
 
     public String contactInformationHeaderText(){
     return contactInformationHeader.getText();
-    }
+    }    // for Then//
 
     }
 

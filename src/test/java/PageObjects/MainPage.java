@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 public class MainPage {
     @FindBy(xpath = "//*[@id=\"navmenu\"]/ul/li[3]/a")
     private  WebElement clickOnInstructor;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[2]/div/div/a[1]")
+    private  WebElement clickTwitterJane;
+
     @FindBy(xpath = "/html/body/section[2]/div/div/div/input")
     private WebElement inputEmailField;
     @FindBy(xpath = "/html/body/section[2]/div/div/div/input")
@@ -30,6 +34,8 @@ public class MainPage {
     private WebElement readMorelHeaderHybrid;
     @FindBy(xpath = "//*[@id=\"learn-selenium\"]/div/div/div[1]/h2")
     private WebElement readMoreHeaderLearnSelenium;
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/h2")
+    private  WebElement ourInstructorsHeader;
 
 
     @FindBy(xpath = "/html/body/section[3]/div/div/div[3]/div/div/a")
@@ -43,7 +49,10 @@ public class MainPage {
     private  WebElement softwareTestingCourseHeader;
 
     @FindBy(xpath = "//*[@id=\"instructors\"]/div/h2")
-    private  WebElement ourInstructorsHeader;
+    private  WebElement ourInstructorsHeader2;
+
+    @FindBy(xpath = "//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div[1]/div[1]/div/div[1]/span")
+    private WebElement nextPageTwitter;
 
 
 
@@ -54,6 +63,8 @@ public class MainPage {
     }
 
     public void clickOnInstructor(){clickOnInstructor.click();}
+
+    public void clickTwitterJane(){clickTwitterJane.click();}
     public void inputValueInEmailField(String string) {
         inputEmailField.sendKeys(string);
     }
@@ -84,9 +95,9 @@ public class MainPage {
     }
 
 
-    public WebElement getReadMorelHeaderHybrid(){
-        return readMorelHeaderHybrid;
-    }
+    public WebElement getReadMorelHeaderHybrid(){return readMorelHeaderHybrid;}
+
+    public  WebElement getOurInstructorsHeader(){return ourInstructorsHeader2;}
 
     public WebElement getReadMoreHeaderLearnSelenium(){return readMoreHeaderLearnSelenium;}
 
@@ -97,7 +108,9 @@ public class MainPage {
         return softwareTestingCourseHeader.getText();
     }
 
-    public  String ourInstructorsHeaderText(){return ourInstructorsHeader.getText();}
+    public String ourInstructorsHeaderText(){return ourInstructorsHeader.getText();}
+
+    public String nextPageTwitterText(){return nextPageTwitter.getText();}
 
 }
 
