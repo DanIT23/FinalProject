@@ -1,10 +1,14 @@
 package org.example;
 
 import PageObjects.*;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.AssertionsKt;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -342,6 +346,15 @@ public class StepDefinitions {
     @Then("I will redirected to Twitter page")
     public void iWillRedirectedToTwitterPage() {
         Assertions.assertEquals("Happening now",mainPage.nextPageTwitterText()  );
+    }
+
+    @After
+    public void cleanUp(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/jpg", "");
+        }
+        driver.quit();
     }
 }
 
